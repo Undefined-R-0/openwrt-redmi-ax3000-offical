@@ -39,30 +39,8 @@ jobs:
 
       - name: Configure
         run: |
-          cat <<EOF | sed -E 's/^  //' >.config
-            CONFIG_TARGET_ipq50xx=y
-            CONFIG_TARGET_ipq50xx_arm=y
-            CONFIG_TARGET_MULTI_PROFILE=y
-            CONFIG_TARGET_ALL_PROFILES=y
-            CONFIG_TARGET_PER_DEVICE_ROOTFS=y
-
-            CONFIG_ATH11K_MEM_PROFILE_256M=y
-
-            CONFIG_IB=y
-            # CONFIG_IB_STANDALONE is not set
-            CONFIG_SDK=y
-            CONFIG_MAKE_TOOLCHAIN=y
-
-            CONFIG_ALL_NONSHARED=y
-            CONFIG_REPRODUCIBLE_DEBUG_INFO=y
-
-            CONFIG_PACKAGE_kmod-bonding=y
-            CONFIG_PACKAGE_kmod-qca-nss-ecm-standard=y
-            CONFIG_PACKAGE_kmod-qca-nss-drv-pppoe=y
-
-            CONFIG_PACKAGE_luci=y
-          EOF
-          make defconfig
+          chmod +x preprocess_config.sh
+          bash preprocess_config.sh
 
       - name: Download
         run: |
@@ -93,7 +71,7 @@ jobs:
           path: dl/*
 
   gh-pages:
-    needs: [ build ]
+    needs: [build]
     runs-on: ubuntu-20.04
     permissions:
       contents: write
@@ -101,8 +79,8 @@ jobs:
       - name: Checkout gh-pages
         uses: actions/checkout@v3
         with:
-          path: 'gh-pages'
-          ref: 'gh-pages'
+          path: "gh-pages"
+          ref: "gh-pages"
           fetch-depth: 0
 
       - name: Configure the git user
@@ -144,7 +122,7 @@ jobs:
           git push -f origin gh-pages
 
   release:
-    needs: [ build ]
+    needs: [build]
     runs-on: ubuntu-20.04
     permissions:
       contents: write
