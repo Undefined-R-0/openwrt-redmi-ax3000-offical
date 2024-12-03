@@ -37,6 +37,15 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
+          # update golang
+          rm -rf feeds/packages/lang/golang
+          git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
+
+      - name: Download Helloworld
+        run: |
+          chmod +x hellowall.sh
+          bash hellowall.sh
+
       - name: Configure
         run: |
           chmod +x preprocess_config.sh
