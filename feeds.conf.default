@@ -14,5 +14,8 @@ src-git-full telephony https://github.com/openwrt/telephony.git^920fbc5c0a2e4bad
 src-git kenzo https://github.com/kenzok8/openwrt-packages
 
 # passwall
-src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main
-src-git passwall https://github.com/xiaorouji/openwrt-passwall.git;main
+# src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main
+# src-git passwall https://github.com/xiaorouji/openwrt-passwall.git;main
+
+# helloworld
+src-git helloworld https://github.com/fw876/helloworld.git
