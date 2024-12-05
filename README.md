@@ -1,5 +1,7 @@
 # openwrt-redmi-ax3000
 
+# Passwall bug report.
+
 `Openwrt` for `Redmi AX3000` / `Xiaomi CR880x` / `Xiaomi CR881x`
 
 | Device                                                 | Boot | Switch | CPU Ethernet | NSS NAT | 2.4G WiFi | 5G WiFi |
