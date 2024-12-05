@@ -49,7 +49,7 @@ jobs:
       - name: Configure
         run: |
           chmod +x preprocess_config.sh
-          bash preprocess_config.sh
+          # bash preprocess_config.sh
 
       - name: Download
         run: |
